@@ -13,6 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.todo_backend.domain.Todo;
 import com.example.todo_backend.repository.TodoRepository;
 
+/*
+ * @CrossOrigin の役割とは？
+ * ブラウザは、XSS（クロスサイトスクリプティング）やCSRF攻撃を防ぐために、
+ * 「あるオリジン（スキーム＋ドメイン＋ポート）」から読み込んだJSが、
+ * 別オリジンのサーバーへ勝手にアクセスすることを制限します。
+ * http://localhost:5173（webサーバー）からもらったjs ⇒ http://localhost:8080（apiサーバー）へのアクセスを制限
+ * 
+ * JS（React）を配信するサーバーと、APIサーバーが別ドメインやポート番号であるSPA構成では、この設定が不可欠になります。
+ */
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/todos")
